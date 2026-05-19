@@ -134,6 +134,8 @@ pub struct I18nStrings {
     pub preferences_nav_file: String,
     /// Theme preferences navigation label.
     pub preferences_nav_theme: String,
+    /// Shortcut preferences navigation label.
+    pub preferences_nav_shortcuts: String,
     /// Startup option field label.
     pub preferences_startup_option: String,
     /// Startup option for creating a new Markdown document.
@@ -148,6 +150,48 @@ pub struct I18nStrings {
     pub preferences_cancel: String,
     /// Title shown when preferences cannot be saved.
     pub preferences_save_failed_title: String,
+    pub preferences_shortcuts_group_file: String,
+    pub preferences_shortcuts_group_edit: String,
+    pub preferences_shortcuts_group_navigation: String,
+    pub preferences_shortcuts_group_formatting: String,
+    pub preferences_shortcuts_group_block: String,
+    pub preferences_shortcuts_group_other: String,
+    pub preferences_shortcut_record: String,
+    pub preferences_shortcut_reset: String,
+    pub preferences_shortcut_recording: String,
+    pub preferences_shortcut_conflict_template: String,
+    pub preferences_shortcut_invalid_template: String,
+    pub preferences_shortcut_newline: String,
+    pub preferences_shortcut_delete_back: String,
+    pub preferences_shortcut_delete: String,
+    pub preferences_shortcut_focus_prev: String,
+    pub preferences_shortcut_focus_next: String,
+    pub preferences_shortcut_move_left: String,
+    pub preferences_shortcut_move_right: String,
+    pub preferences_shortcut_home: String,
+    pub preferences_shortcut_end: String,
+    pub preferences_shortcut_select_left: String,
+    pub preferences_shortcut_select_right: String,
+    pub preferences_shortcut_select_home: String,
+    pub preferences_shortcut_select_end: String,
+    pub preferences_shortcut_select_all: String,
+    pub preferences_shortcut_copy: String,
+    pub preferences_shortcut_cut: String,
+    pub preferences_shortcut_paste: String,
+    pub preferences_shortcut_undo: String,
+    pub preferences_shortcut_bold_selection: String,
+    pub preferences_shortcut_italic_selection: String,
+    pub preferences_shortcut_underline_selection: String,
+    pub preferences_shortcut_code_selection: String,
+    pub preferences_shortcut_indent_block: String,
+    pub preferences_shortcut_outdent_block: String,
+    pub preferences_shortcut_exit_code_block: String,
+    pub preferences_shortcut_save_document: String,
+    pub preferences_shortcut_save_document_as: String,
+    pub preferences_shortcut_new_window: String,
+    pub preferences_shortcut_open_file: String,
+    pub preferences_shortcut_quit_application: String,
+    pub preferences_shortcut_dismiss_transient_ui: String,
     /// Title of the link-opening confirmation prompt.
     pub open_link_title: String,
     /// Confirm button for the link-opening prompt.
@@ -267,6 +311,7 @@ struct I18nStringsDe {
     preferences_window_title: Option<String>,
     preferences_nav_file: Option<String>,
     preferences_nav_theme: Option<String>,
+    preferences_nav_shortcuts: Option<String>,
     preferences_startup_option: Option<String>,
     preferences_startup_new_file: Option<String>,
     preferences_startup_last_opened_file: Option<String>,
@@ -274,6 +319,48 @@ struct I18nStringsDe {
     preferences_save: Option<String>,
     preferences_cancel: Option<String>,
     preferences_save_failed_title: Option<String>,
+    preferences_shortcuts_group_file: Option<String>,
+    preferences_shortcuts_group_edit: Option<String>,
+    preferences_shortcuts_group_navigation: Option<String>,
+    preferences_shortcuts_group_formatting: Option<String>,
+    preferences_shortcuts_group_block: Option<String>,
+    preferences_shortcuts_group_other: Option<String>,
+    preferences_shortcut_record: Option<String>,
+    preferences_shortcut_reset: Option<String>,
+    preferences_shortcut_recording: Option<String>,
+    preferences_shortcut_conflict_template: Option<String>,
+    preferences_shortcut_invalid_template: Option<String>,
+    preferences_shortcut_newline: Option<String>,
+    preferences_shortcut_delete_back: Option<String>,
+    preferences_shortcut_delete: Option<String>,
+    preferences_shortcut_focus_prev: Option<String>,
+    preferences_shortcut_focus_next: Option<String>,
+    preferences_shortcut_move_left: Option<String>,
+    preferences_shortcut_move_right: Option<String>,
+    preferences_shortcut_home: Option<String>,
+    preferences_shortcut_end: Option<String>,
+    preferences_shortcut_select_left: Option<String>,
+    preferences_shortcut_select_right: Option<String>,
+    preferences_shortcut_select_home: Option<String>,
+    preferences_shortcut_select_end: Option<String>,
+    preferences_shortcut_select_all: Option<String>,
+    preferences_shortcut_copy: Option<String>,
+    preferences_shortcut_cut: Option<String>,
+    preferences_shortcut_paste: Option<String>,
+    preferences_shortcut_undo: Option<String>,
+    preferences_shortcut_bold_selection: Option<String>,
+    preferences_shortcut_italic_selection: Option<String>,
+    preferences_shortcut_underline_selection: Option<String>,
+    preferences_shortcut_code_selection: Option<String>,
+    preferences_shortcut_indent_block: Option<String>,
+    preferences_shortcut_outdent_block: Option<String>,
+    preferences_shortcut_exit_code_block: Option<String>,
+    preferences_shortcut_save_document: Option<String>,
+    preferences_shortcut_save_document_as: Option<String>,
+    preferences_shortcut_new_window: Option<String>,
+    preferences_shortcut_open_file: Option<String>,
+    preferences_shortcut_quit_application: Option<String>,
+    preferences_shortcut_dismiss_transient_ui: Option<String>,
     open_link_title: Option<String>,
     open_link_open: Option<String>,
     open_link_cancel: Option<String>,
@@ -363,6 +450,7 @@ const I18N_STRING_KEYS: &[&str] = &[
     "preferences_window_title",
     "preferences_nav_file",
     "preferences_nav_theme",
+    "preferences_nav_shortcuts",
     "preferences_startup_option",
     "preferences_startup_new_file",
     "preferences_startup_last_opened_file",
@@ -370,6 +458,48 @@ const I18N_STRING_KEYS: &[&str] = &[
     "preferences_save",
     "preferences_cancel",
     "preferences_save_failed_title",
+    "preferences_shortcuts_group_file",
+    "preferences_shortcuts_group_edit",
+    "preferences_shortcuts_group_navigation",
+    "preferences_shortcuts_group_formatting",
+    "preferences_shortcuts_group_block",
+    "preferences_shortcuts_group_other",
+    "preferences_shortcut_record",
+    "preferences_shortcut_reset",
+    "preferences_shortcut_recording",
+    "preferences_shortcut_conflict_template",
+    "preferences_shortcut_invalid_template",
+    "preferences_shortcut_newline",
+    "preferences_shortcut_delete_back",
+    "preferences_shortcut_delete",
+    "preferences_shortcut_focus_prev",
+    "preferences_shortcut_focus_next",
+    "preferences_shortcut_move_left",
+    "preferences_shortcut_move_right",
+    "preferences_shortcut_home",
+    "preferences_shortcut_end",
+    "preferences_shortcut_select_left",
+    "preferences_shortcut_select_right",
+    "preferences_shortcut_select_home",
+    "preferences_shortcut_select_end",
+    "preferences_shortcut_select_all",
+    "preferences_shortcut_copy",
+    "preferences_shortcut_cut",
+    "preferences_shortcut_paste",
+    "preferences_shortcut_undo",
+    "preferences_shortcut_bold_selection",
+    "preferences_shortcut_italic_selection",
+    "preferences_shortcut_underline_selection",
+    "preferences_shortcut_code_selection",
+    "preferences_shortcut_indent_block",
+    "preferences_shortcut_outdent_block",
+    "preferences_shortcut_exit_code_block",
+    "preferences_shortcut_save_document",
+    "preferences_shortcut_save_document_as",
+    "preferences_shortcut_new_window",
+    "preferences_shortcut_open_file",
+    "preferences_shortcut_quit_application",
+    "preferences_shortcut_dismiss_transient_ui",
     "open_link_title",
     "open_link_open",
     "open_link_cancel",
@@ -539,6 +669,9 @@ impl I18nStringsDe {
             preferences_nav_theme: self
                 .preferences_nav_theme
                 .unwrap_or(defaults.preferences_nav_theme),
+            preferences_nav_shortcuts: self
+                .preferences_nav_shortcuts
+                .unwrap_or(defaults.preferences_nav_shortcuts),
             preferences_startup_option: self
                 .preferences_startup_option
                 .unwrap_or(defaults.preferences_startup_option),
@@ -558,6 +691,132 @@ impl I18nStringsDe {
             preferences_save_failed_title: self
                 .preferences_save_failed_title
                 .unwrap_or(defaults.preferences_save_failed_title),
+            preferences_shortcuts_group_file: self
+                .preferences_shortcuts_group_file
+                .unwrap_or(defaults.preferences_shortcuts_group_file),
+            preferences_shortcuts_group_edit: self
+                .preferences_shortcuts_group_edit
+                .unwrap_or(defaults.preferences_shortcuts_group_edit),
+            preferences_shortcuts_group_navigation: self
+                .preferences_shortcuts_group_navigation
+                .unwrap_or(defaults.preferences_shortcuts_group_navigation),
+            preferences_shortcuts_group_formatting: self
+                .preferences_shortcuts_group_formatting
+                .unwrap_or(defaults.preferences_shortcuts_group_formatting),
+            preferences_shortcuts_group_block: self
+                .preferences_shortcuts_group_block
+                .unwrap_or(defaults.preferences_shortcuts_group_block),
+            preferences_shortcuts_group_other: self
+                .preferences_shortcuts_group_other
+                .unwrap_or(defaults.preferences_shortcuts_group_other),
+            preferences_shortcut_record: self
+                .preferences_shortcut_record
+                .unwrap_or(defaults.preferences_shortcut_record),
+            preferences_shortcut_reset: self
+                .preferences_shortcut_reset
+                .unwrap_or(defaults.preferences_shortcut_reset),
+            preferences_shortcut_recording: self
+                .preferences_shortcut_recording
+                .unwrap_or(defaults.preferences_shortcut_recording),
+            preferences_shortcut_conflict_template: self
+                .preferences_shortcut_conflict_template
+                .unwrap_or(defaults.preferences_shortcut_conflict_template),
+            preferences_shortcut_invalid_template: self
+                .preferences_shortcut_invalid_template
+                .unwrap_or(defaults.preferences_shortcut_invalid_template),
+            preferences_shortcut_newline: self
+                .preferences_shortcut_newline
+                .unwrap_or(defaults.preferences_shortcut_newline),
+            preferences_shortcut_delete_back: self
+                .preferences_shortcut_delete_back
+                .unwrap_or(defaults.preferences_shortcut_delete_back),
+            preferences_shortcut_delete: self
+                .preferences_shortcut_delete
+                .unwrap_or(defaults.preferences_shortcut_delete),
+            preferences_shortcut_focus_prev: self
+                .preferences_shortcut_focus_prev
+                .unwrap_or(defaults.preferences_shortcut_focus_prev),
+            preferences_shortcut_focus_next: self
+                .preferences_shortcut_focus_next
+                .unwrap_or(defaults.preferences_shortcut_focus_next),
+            preferences_shortcut_move_left: self
+                .preferences_shortcut_move_left
+                .unwrap_or(defaults.preferences_shortcut_move_left),
+            preferences_shortcut_move_right: self
+                .preferences_shortcut_move_right
+                .unwrap_or(defaults.preferences_shortcut_move_right),
+            preferences_shortcut_home: self
+                .preferences_shortcut_home
+                .unwrap_or(defaults.preferences_shortcut_home),
+            preferences_shortcut_end: self
+                .preferences_shortcut_end
+                .unwrap_or(defaults.preferences_shortcut_end),
+            preferences_shortcut_select_left: self
+                .preferences_shortcut_select_left
+                .unwrap_or(defaults.preferences_shortcut_select_left),
+            preferences_shortcut_select_right: self
+                .preferences_shortcut_select_right
+                .unwrap_or(defaults.preferences_shortcut_select_right),
+            preferences_shortcut_select_home: self
+                .preferences_shortcut_select_home
+                .unwrap_or(defaults.preferences_shortcut_select_home),
+            preferences_shortcut_select_end: self
+                .preferences_shortcut_select_end
+                .unwrap_or(defaults.preferences_shortcut_select_end),
+            preferences_shortcut_select_all: self
+                .preferences_shortcut_select_all
+                .unwrap_or(defaults.preferences_shortcut_select_all),
+            preferences_shortcut_copy: self
+                .preferences_shortcut_copy
+                .unwrap_or(defaults.preferences_shortcut_copy),
+            preferences_shortcut_cut: self
+                .preferences_shortcut_cut
+                .unwrap_or(defaults.preferences_shortcut_cut),
+            preferences_shortcut_paste: self
+                .preferences_shortcut_paste
+                .unwrap_or(defaults.preferences_shortcut_paste),
+            preferences_shortcut_undo: self
+                .preferences_shortcut_undo
+                .unwrap_or(defaults.preferences_shortcut_undo),
+            preferences_shortcut_bold_selection: self
+                .preferences_shortcut_bold_selection
+                .unwrap_or(defaults.preferences_shortcut_bold_selection),
+            preferences_shortcut_italic_selection: self
+                .preferences_shortcut_italic_selection
+                .unwrap_or(defaults.preferences_shortcut_italic_selection),
+            preferences_shortcut_underline_selection: self
+                .preferences_shortcut_underline_selection
+                .unwrap_or(defaults.preferences_shortcut_underline_selection),
+            preferences_shortcut_code_selection: self
+                .preferences_shortcut_code_selection
+                .unwrap_or(defaults.preferences_shortcut_code_selection),
+            preferences_shortcut_indent_block: self
+                .preferences_shortcut_indent_block
+                .unwrap_or(defaults.preferences_shortcut_indent_block),
+            preferences_shortcut_outdent_block: self
+                .preferences_shortcut_outdent_block
+                .unwrap_or(defaults.preferences_shortcut_outdent_block),
+            preferences_shortcut_exit_code_block: self
+                .preferences_shortcut_exit_code_block
+                .unwrap_or(defaults.preferences_shortcut_exit_code_block),
+            preferences_shortcut_save_document: self
+                .preferences_shortcut_save_document
+                .unwrap_or(defaults.preferences_shortcut_save_document),
+            preferences_shortcut_save_document_as: self
+                .preferences_shortcut_save_document_as
+                .unwrap_or(defaults.preferences_shortcut_save_document_as),
+            preferences_shortcut_new_window: self
+                .preferences_shortcut_new_window
+                .unwrap_or(defaults.preferences_shortcut_new_window),
+            preferences_shortcut_open_file: self
+                .preferences_shortcut_open_file
+                .unwrap_or(defaults.preferences_shortcut_open_file),
+            preferences_shortcut_quit_application: self
+                .preferences_shortcut_quit_application
+                .unwrap_or(defaults.preferences_shortcut_quit_application),
+            preferences_shortcut_dismiss_transient_ui: self
+                .preferences_shortcut_dismiss_transient_ui
+                .unwrap_or(defaults.preferences_shortcut_dismiss_transient_ui),
             open_link_title: self.open_link_title.unwrap_or(defaults.open_link_title),
             open_link_open: self.open_link_open.unwrap_or(defaults.open_link_open),
             open_link_cancel: self.open_link_cancel.unwrap_or(defaults.open_link_cancel),
@@ -712,6 +971,7 @@ impl I18nStrings {
             preferences_window_title: "偏好设置".into(),
             preferences_nav_file: "文件".into(),
             preferences_nav_theme: "主题".into(),
+            preferences_nav_shortcuts: "快捷键".into(),
             preferences_startup_option: "启动选项".into(),
             preferences_startup_new_file: "新 md 文件".into(),
             preferences_startup_last_opened_file: "上一次打开的 md 文件".into(),
@@ -719,6 +979,48 @@ impl I18nStrings {
             preferences_save: "保存".into(),
             preferences_cancel: "取消".into(),
             preferences_save_failed_title: "保存偏好设置失败".into(),
+            preferences_shortcuts_group_file: "文件".into(),
+            preferences_shortcuts_group_edit: "编辑".into(),
+            preferences_shortcuts_group_navigation: "移动与选择".into(),
+            preferences_shortcuts_group_formatting: "格式化".into(),
+            preferences_shortcuts_group_block: "块操作".into(),
+            preferences_shortcuts_group_other: "其他".into(),
+            preferences_shortcut_record: "录制".into(),
+            preferences_shortcut_reset: "重置".into(),
+            preferences_shortcut_recording: "按下快捷键...".into(),
+            preferences_shortcut_conflict_template: "该快捷键已被“{command}”使用".into(),
+            preferences_shortcut_invalid_template: "无法使用快捷键“{shortcut}”".into(),
+            preferences_shortcut_newline: "换行".into(),
+            preferences_shortcut_delete_back: "向前删除".into(),
+            preferences_shortcut_delete: "向后删除".into(),
+            preferences_shortcut_focus_prev: "聚焦上一块".into(),
+            preferences_shortcut_focus_next: "聚焦下一块".into(),
+            preferences_shortcut_move_left: "光标左移".into(),
+            preferences_shortcut_move_right: "光标右移".into(),
+            preferences_shortcut_home: "行首".into(),
+            preferences_shortcut_end: "行尾".into(),
+            preferences_shortcut_select_left: "向左选择".into(),
+            preferences_shortcut_select_right: "向右选择".into(),
+            preferences_shortcut_select_home: "选择到行首".into(),
+            preferences_shortcut_select_end: "选择到行尾".into(),
+            preferences_shortcut_select_all: "全选".into(),
+            preferences_shortcut_copy: "复制".into(),
+            preferences_shortcut_cut: "剪切".into(),
+            preferences_shortcut_paste: "粘贴".into(),
+            preferences_shortcut_undo: "撤销".into(),
+            preferences_shortcut_bold_selection: "加粗".into(),
+            preferences_shortcut_italic_selection: "斜体".into(),
+            preferences_shortcut_underline_selection: "下划线".into(),
+            preferences_shortcut_code_selection: "行内代码".into(),
+            preferences_shortcut_indent_block: "缩进块".into(),
+            preferences_shortcut_outdent_block: "取消缩进块".into(),
+            preferences_shortcut_exit_code_block: "退出代码块".into(),
+            preferences_shortcut_save_document: "保存文档".into(),
+            preferences_shortcut_save_document_as: "另存为".into(),
+            preferences_shortcut_new_window: "新建窗口".into(),
+            preferences_shortcut_open_file: "打开文件".into(),
+            preferences_shortcut_quit_application: "退出应用".into(),
+            preferences_shortcut_dismiss_transient_ui: "关闭临时界面".into(),
             open_link_title: "打开链接？".into(),
             open_link_open: "打开".into(),
             open_link_cancel: "取消".into(),
@@ -822,6 +1124,7 @@ impl I18nStrings {
             preferences_window_title: "Preferences".into(),
             preferences_nav_file: "File".into(),
             preferences_nav_theme: "Theme".into(),
+            preferences_nav_shortcuts: "Shortcuts".into(),
             preferences_startup_option: "Startup Option".into(),
             preferences_startup_new_file: "New Markdown File".into(),
             preferences_startup_last_opened_file: "Last Opened Markdown File".into(),
@@ -829,6 +1132,49 @@ impl I18nStrings {
             preferences_save: "Save".into(),
             preferences_cancel: "Cancel".into(),
             preferences_save_failed_title: "Save Preferences Failed".into(),
+            preferences_shortcuts_group_file: "File".into(),
+            preferences_shortcuts_group_edit: "Edit".into(),
+            preferences_shortcuts_group_navigation: "Move and Select".into(),
+            preferences_shortcuts_group_formatting: "Formatting".into(),
+            preferences_shortcuts_group_block: "Block Operations".into(),
+            preferences_shortcuts_group_other: "Other".into(),
+            preferences_shortcut_record: "Record".into(),
+            preferences_shortcut_reset: "Reset".into(),
+            preferences_shortcut_recording: "Press shortcut...".into(),
+            preferences_shortcut_conflict_template: "This shortcut is already used by {command}"
+                .into(),
+            preferences_shortcut_invalid_template: "Cannot use shortcut {shortcut}".into(),
+            preferences_shortcut_newline: "Newline".into(),
+            preferences_shortcut_delete_back: "Delete Backward".into(),
+            preferences_shortcut_delete: "Delete Forward".into(),
+            preferences_shortcut_focus_prev: "Focus Previous Block".into(),
+            preferences_shortcut_focus_next: "Focus Next Block".into(),
+            preferences_shortcut_move_left: "Move Left".into(),
+            preferences_shortcut_move_right: "Move Right".into(),
+            preferences_shortcut_home: "Line Start".into(),
+            preferences_shortcut_end: "Line End".into(),
+            preferences_shortcut_select_left: "Select Left".into(),
+            preferences_shortcut_select_right: "Select Right".into(),
+            preferences_shortcut_select_home: "Select to Line Start".into(),
+            preferences_shortcut_select_end: "Select to Line End".into(),
+            preferences_shortcut_select_all: "Select All".into(),
+            preferences_shortcut_copy: "Copy".into(),
+            preferences_shortcut_cut: "Cut".into(),
+            preferences_shortcut_paste: "Paste".into(),
+            preferences_shortcut_undo: "Undo".into(),
+            preferences_shortcut_bold_selection: "Bold".into(),
+            preferences_shortcut_italic_selection: "Italic".into(),
+            preferences_shortcut_underline_selection: "Underline".into(),
+            preferences_shortcut_code_selection: "Inline Code".into(),
+            preferences_shortcut_indent_block: "Indent Block".into(),
+            preferences_shortcut_outdent_block: "Outdent Block".into(),
+            preferences_shortcut_exit_code_block: "Exit Code Block".into(),
+            preferences_shortcut_save_document: "Save Document".into(),
+            preferences_shortcut_save_document_as: "Save Document As".into(),
+            preferences_shortcut_new_window: "New Window".into(),
+            preferences_shortcut_open_file: "Open File".into(),
+            preferences_shortcut_quit_application: "Quit Application".into(),
+            preferences_shortcut_dismiss_transient_ui: "Dismiss Temporary UI".into(),
             open_link_title: "Open link?".into(),
             open_link_open: "Open".into(),
             open_link_cancel: "Cancel".into(),

@@ -20,7 +20,7 @@ mod net;
 mod theme;
 
 use app_menu::{init as init_app_menu, open_editor_window};
-use components::init as init_editor;
+use components::init_with_keybindings as init_editor;
 use i18n::I18nManager;
 use theme::ThemeManager;
 
@@ -35,7 +35,7 @@ fn main() {
         I18nManager::init_with_language_id(cx, &preferences.default_language_id);
         ThemeManager::init_with_theme_id(cx, &preferences.default_theme_id);
         net::install_http_client(cx);
-        init_editor(cx);
+        init_editor(cx, &preferences.keybindings);
         init_app_menu(cx);
 
         if input_paths.is_empty() {

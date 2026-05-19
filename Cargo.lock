@@ -4677,9 +4677,9 @@ checksum = "973443cf09a9c8656b574a866ab68dfa19f0867d0340648c7d2f6a71b8a8ea68"
 
 [[package]]
 name = "ratex-font"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1f3b09d2994886d337dbdbf6fcd2e86321d6c210643736b48d374d71b4d72d89"
+checksum = "afbff82873da9cb006b75910c4978ccf5a0e42b95e92b45f0361751e83134eb3"
 dependencies = [
  "phf 0.11.3",
  "ratex-types",
@@ -4687,9 +4687,9 @@ dependencies = [
 
 [[package]]
 name = "ratex-font-loader"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fa79d0493ea11b932d95b836477e4ec0c2c2388541a1211ffd3c2e4ae261fb95"
+checksum = "288ab95dd208f89b48e40dde73ad49f220e09fce1bb1ba7fb94b9b9da1c3638d"
 dependencies = [
  "ab_glyph",
  "ratex-font",
@@ -4700,18 +4700,18 @@ dependencies = [
 
 [[package]]
 name = "ratex-katex-fonts"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "75ee178442689dc22b0fc5b829ab94661668e2f11bf6ade904ac1663b1340135"
+checksum = "356dda9769af6a785e9ba8fe2ffa89fd22b047cec5f4e26767a5e29548108ac6"
 dependencies = [
  "rust-embed",
 ]
 
 [[package]]
 name = "ratex-layout"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dc5f2ff5797c4226c4391190d68aa25630cb0bf3c9d4f52521ff825e2763a1c8"
+checksum = "13a343bc5b02d64d5569dd71c388386f140f7caef2aa17f1d90af40db8194249"
 dependencies = [
  "ratex-font",
  "ratex-parser",
@@ -4721,9 +4721,9 @@ dependencies = [
 
 [[package]]
 name = "ratex-lexer"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "070410c8c842ffcfb8292bf416626394a27e15410e9064fad5aa9ba9013b5550"
+checksum = "34501a6076195853f6888a4b725b2fa4e6c58708f817ad22d48b70fd6ad47354"
 dependencies = [
  "ratex-types",
  "serde",
@@ -4732,9 +4732,9 @@ dependencies = [
 
 [[package]]
 name = "ratex-parser"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "384da3ce5b93e6035560bc5d38ad2f0f03ca6a3b97b4e017a1c87098ebbf3968"
+checksum = "9e9c6108fa2f093a2f71f4212d698796777ed86e8a10dd00d23712944fa6e403"
 dependencies = [
  "fancy-regex",
  "ratex-font",
@@ -4750,9 +4750,9 @@ dependencies = [
 
 [[package]]
 name = "ratex-svg"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4b8c8732578b8f365491f1cd437193738aee9677f52e00bbff013853122233fb"
+checksum = "f532f3ee134b400b8d98d4583254aa412fdac5315ce049bc2e85317751cd47d9"
 dependencies = [
  "ab_glyph",
  "base64",
@@ -4765,20 +4765,21 @@ dependencies = [
 
 [[package]]
 name = "ratex-types"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d64ce0e9190bd69f9d7d4eadde2b1a1fe256d7ee57c7cbc0137fcd8895fa5506"
+checksum = "8ff31d1010354f0e22ade3ded5bb108d28a7239d0fee8e187a045a89100590c2"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "ratex-unicode-font"
-version = "0.1.6"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14c9b86f7ab7c0a1619bed1a9c705e1feba07f7e11f89631b4262ac2542035f6"
+checksum = "8cb232cd00aefdee9a8e3368927d82eab9d458af2538353f4b44124800bee629"
 dependencies = [
  "fontdb 0.23.0",
+ "system-fonts",
  "ttf-parser 0.25.1",
 ]
 
@@ -6062,6 +6063,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "system-fonts"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f369feb844d5e08bb4e938c3f88ff359261bc94c7553ddb34e174447120b64d6"
+dependencies = [
+ "fontdb 0.23.0",
+ "sys-locale",
+]
+
+[[package]]
 name = "taffy"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6996,7 +7007,7 @@ checksum = "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426"
 
 [[package]]
 name = "velotype"
-version = "0.4.5"
+version = "0.4.8"
 dependencies = [
  "adot-tree-sitter-toml",
  "anyhow",
