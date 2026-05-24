@@ -20,10 +20,17 @@ pub(crate) fn open_about_github_url(cx: &mut App) {
 }
 
 fn editor_text_font() -> Font {
+    // FontFallbacks is internally `Arc<Vec<String>>` — building it once
+    // per process and Arc-cloning per render is the right shape, since
+    // editor_text_font() is called from Editor::render on every frame.
+    static FALLBACKS: std::sync::OnceLock<FontFallbacks> = std::sync::OnceLock::new();
+    let fallbacks = FALLBACKS
+        .get_or_init(|| {
+            FontFallbacks::from_fonts(tibetan_font_fallbacks_for_target_os(std::env::consts::OS))
+        })
+        .clone();
     let mut font = font(".SystemUIFont");
-    font.fallbacks = Some(FontFallbacks::from_fonts(
-        tibetan_font_fallbacks_for_target_os(std::env::consts::OS),
-    ));
+    font.fallbacks = Some(fallbacks);
     font
 }
 
