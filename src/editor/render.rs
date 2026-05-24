@@ -197,19 +197,23 @@ fn in_window_menu_bar_height_for_target_os(
     }
 }
 
-fn menu_panel_left(open_index: usize, menu_labels: &[String], dimensions: &ThemeDimensions) -> f32 {
+fn menu_panel_left<S: AsRef<str>>(
+    open_index: usize,
+    menu_labels: &[S],
+    dimensions: &ThemeDimensions,
+) -> f32 {
     let prior_width: f32 = menu_labels
         .iter()
         .take(open_index)
-        .map(|label| menu_bar_button_width(label, dimensions))
+        .map(|label| menu_bar_button_width(label.as_ref(), dimensions))
         .sum();
     dimensions.menu_bar_padding_x + prior_width + dimensions.menu_bar_gap * open_index as f32
 }
 
-fn menu_panel_width_for_labels(labels: &[String], dimensions: &ThemeDimensions) -> f32 {
+fn menu_panel_width_for_labels<S: AsRef<str>>(labels: &[S], dimensions: &ThemeDimensions) -> f32 {
     let widest_label = labels
         .iter()
-        .map(|label| estimated_menu_label_width(label, dimensions.menu_text_size))
+        .map(|label| estimated_menu_label_width(label.as_ref(), dimensions.menu_text_size))
         .fold(0.0, f32::max);
     let content_width = widest_label + dimensions.menu_item_padding_x * 2.0;
     dimensions.menu_panel_width.max(content_width.ceil())
@@ -260,12 +264,12 @@ struct MenuSubmenuBridgeGeometry {
     height: f32,
 }
 
-fn submenu_bridge_geometry(
+fn submenu_bridge_geometry<S: AsRef<str>, T: AsRef<str>>(
     open_index: usize,
-    menu_labels: &[String],
+    menu_labels: &[S],
     items: &[OwnedMenuItem],
     item_index: usize,
-    submenu_labels: &[String],
+    submenu_labels: &[T],
     dimensions: &ThemeDimensions,
 ) -> Option<MenuSubmenuBridgeGeometry> {
     let item = items.get(item_index)?;
@@ -503,17 +507,17 @@ impl Editor {
     }
 
     /// Renders the in-window fallback menu bar backed by the app menus
-    /// registered through `App::set_menus`.
+    /// registered through `App::set_menus`. `menus` and `menu_labels` are
+    /// fetched and computed once at the caller and shared with
+    /// [`Self::render_in_window_menu_panel`].
     fn render_in_window_menu_bar(
         &self,
         theme: &Theme,
         cx: &mut Context<Self>,
+        menus: Option<&[gpui::OwnedMenu]>,
+        menu_labels: &[SharedString],
     ) -> Option<AnyElement> {
-        if !supports_in_window_menu() {
-            return None;
-        }
-
-        let menus = cx.get_menus()?;
+        let menus = menus?;
         if menus.is_empty() {
             return None;
         }
@@ -522,10 +526,6 @@ impl Editor {
         let d = &theme.dimensions;
         let t = &theme.typography;
         let editor = cx.entity().downgrade();
-        let menu_labels = menus
-            .iter()
-            .map(|menu| menu.name.to_string())
-            .collect::<Vec<_>>();
         let button_widths = menu_labels
             .iter()
             .map(|label| menu_bar_button_width(label, d))
@@ -589,28 +589,24 @@ impl Editor {
         )
     }
 
-    /// Renders the currently open in-window fallback menu as a floating panel.
+    /// Renders the currently open in-window fallback menu as a floating
+    /// panel. `menus` and `menu_labels` are fetched and computed once at
+    /// the caller and shared with [`Self::render_in_window_menu_bar`].
     fn render_in_window_menu_panel(
         &self,
         theme: &Theme,
         cx: &mut Context<Self>,
+        menus: Option<&[gpui::OwnedMenu]>,
+        menu_labels: &[SharedString],
     ) -> Option<AnyElement> {
-        if !supports_in_window_menu() {
-            return None;
-        }
-
         let open_index = self.menu_bar_open?;
-        let menus = cx.get_menus()?;
+        let menus = menus?;
         let menu = menus.get(open_index)?.clone();
         let menu_items = menu.items.clone();
         let c = &theme.colors;
         let d = &theme.dimensions;
         let t = &theme.typography;
         let editor = cx.entity().downgrade();
-        let menu_labels = menus
-            .iter()
-            .map(|menu| menu.name.to_string())
-            .collect::<Vec<_>>();
         let menu_item_labels = owned_menu_item_labels(&menu_items);
         let menu_panel_width = menu_panel_width_for_labels(&menu_item_labels, d);
         let submenu_bridge = self.menu_submenu_open.and_then(|submenu_index| {
@@ -619,7 +615,7 @@ impl Editor {
                     let submenu_labels = owned_menu_item_labels(&submenu.items);
                     let geometry = submenu_bridge_geometry(
                         open_index,
-                        &menu_labels,
+                        menu_labels,
                         &menu_items,
                         submenu_index,
                         &submenu_labels,
@@ -647,7 +643,7 @@ impl Editor {
                 match menu_items.get(submenu_index)? {
                     OwnedMenuItem::Submenu(submenu) => {
                         let submenu_labels = owned_menu_item_labels(&submenu.items);
-                        let left = menu_panel_left(open_index, &menu_labels, d)
+                        let left = menu_panel_left(open_index, menu_labels, d)
                             + menu_panel_width
                             + d.menu_panel_gap;
                         let top = submenu_panel_top(&menu_items, submenu_index, d);
@@ -872,7 +868,7 @@ impl Editor {
             .absolute()
             .occlude()
             .top(px(d.menu_panel_top))
-            .left(px(menu_panel_left(open_index, &menu_labels, d)))
+            .left(px(menu_panel_left(open_index, menu_labels, d)))
             .w(px(menu_panel_width))
             .p(px(d.menu_panel_padding))
             .flex()
@@ -1760,7 +1756,22 @@ impl Render for Editor {
             .on_action(cx.listener(Self::on_quit_application))
             .on_action(cx.listener(Self::on_toggle_view_mode_action))
             .on_action(cx.listener(Self::on_dismiss_transient_ui));
-        let base = if let Some(menu_bar) = self.render_in_window_menu_bar(&theme, cx) {
+        // Fetch menus + collect labels once for both renderers; previously each
+        // of render_in_window_menu_bar / render_in_window_menu_panel called
+        // cx.get_menus() and walked menus.iter().map(|m| m.name.to_string())
+        // independently — two redundant Vec<OwnedMenu> + two redundant
+        // Vec<String>-of-N-allocations per frame.
+        let menus = supports_in_window_menu()
+            .then(|| cx.get_menus())
+            .flatten()
+            .filter(|m| !m.is_empty());
+        let menu_labels: Vec<SharedString> = menus
+            .as_ref()
+            .map(|m| m.iter().map(|menu| menu.name.clone()).collect())
+            .unwrap_or_default();
+        let base = if let Some(menu_bar) =
+            self.render_in_window_menu_bar(&theme, cx, menus.as_deref(), &menu_labels)
+        {
             base.child(menu_bar)
         } else {
             base
@@ -1772,7 +1783,9 @@ impl Render for Editor {
                 .pt(menu_bar_height)
                 .child(content_area),
         );
-        let base = if let Some(menu_panel) = self.render_in_window_menu_panel(&theme, cx) {
+        let base = if let Some(menu_panel) =
+            self.render_in_window_menu_panel(&theme, cx, menus.as_deref(), &menu_labels)
+        {
             base.child(menu_panel)
         } else {
             base
